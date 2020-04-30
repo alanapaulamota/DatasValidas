@@ -1,7 +1,11 @@
 package com.alana.web.idade.servlet;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+
+import com.alana.web.idade.excecao.DataInvalidaException;
 
 public class Data {
 
@@ -9,11 +13,11 @@ public class Data {
 	private byte mes;
 	private short ano;
 
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	Date hoje = new Date; //sdf.parse(data);
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+	Date hoje = new Date();
 	String str = sdf.format(hoje);
 
-	SimpleDateFormat A = new SimpleDateFormat("D");
+	SimpleDateFormat A = new SimpleDateFormat("d");
 	private byte diahj = (byte) Integer.parseInt(A.format(hoje));
 
 	SimpleDateFormat B = new SimpleDateFormat("M");
@@ -21,6 +25,27 @@ public class Data {
 
 	SimpleDateFormat C = new SimpleDateFormat("y");
 	private short anohj = (short) Integer.parseInt(C.format(hoje));
+
+	public Data() {
+		Date hoje = new Date();
+
+		SimpleDateFormat A = new SimpleDateFormat("d");
+		dia = (byte) Integer.parseInt(A.format(hoje));
+
+		SimpleDateFormat B = new SimpleDateFormat("M");
+		mes = (byte) Integer.parseInt(B.format(hoje));
+
+		SimpleDateFormat C = new SimpleDateFormat("y");
+		ano = (short) Integer.parseInt(C.format(hoje));
+	}
+
+	public Data(String data) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate localDate = LocalDate.parse(data, formatter);
+		setDia(localDate.getDayOfMonth());
+		setMes(localDate.getMonthValue());
+		setAno(localDate.getYear());
+	}
 
 	public Data(int dia, int mes, int ano) {
 		setDia(dia);
@@ -32,7 +57,7 @@ public class Data {
 		if (dia >= 1 && dia <= 31) {
 			this.dia = (byte) dia;
 		} else {
-			throw new RuntimeException("O valor" + dia + "é inválido.");
+			throw new DataInvalidaException("O valor" + dia + "é inválido.");
 		}
 	}
 
@@ -49,7 +74,7 @@ public class Data {
 				if (this.dia <= 31) {
 					this.mes = (byte) mes;
 				} else {
-					throw new RuntimeException("O valor" + mes + "é inválido.");
+					throw new DataInvalidaException("O valor" + mes + "é inválido.");
 				}
 				break;
 			case 04:
@@ -59,7 +84,7 @@ public class Data {
 				if (this.dia <= 30) {
 					this.mes = (byte) mes;
 				} else {
-					throw new RuntimeException("O valor" + mes + "é inválido.");
+					throw new DataInvalidaException("O valor" + mes + "é inválido.");
 				}
 				break;
 			case 02:
@@ -68,7 +93,7 @@ public class Data {
 				} else if (this.anohj % 4 != 0 && this.dia <= 28) {
 					this.mes = (byte) mes;
 				} else {
-					throw new RuntimeException("O valor" + mes + "é inválido.");
+					throw new DataInvalidaException("O valor" + mes + "é inválido.");
 				}
 			}
 
@@ -83,11 +108,24 @@ public class Data {
 				this.ano = (short) ano;
 			}
 		} else {
-			throw new RuntimeException("O valor" + ano + "é inválido.");
+			throw new DataInvalidaException("O valor" + ano + "é inválido.");
 		}
+	}
+
+	public byte getDia() {
+		return dia;
+	}
+
+	public byte getMes() {
+		return mes;
+	}
+
+	public short getAno() {
+		return ano;
 	}
 
 	public String toString() {
 		return this.dia + "/" + this.mes + "/" + this.ano;
 	}
+
 }

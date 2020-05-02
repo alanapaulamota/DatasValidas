@@ -3,19 +3,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>ProjetoServlet</title>
-
-<style><%@include file="/WEB-INF/style/estilo.css"%></style>
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Login</title>
+<style><%@include file="/WEB-INF/style/estilo2.css"%></style>
 </head>
 <body>
-		<h2>Calcule sua idade:</h2>
-		Digite sua data de nascimento e pressione o botão:<br><br>
-		<form action="IdadeServlet" method="post">
-			Data: <input type="text" name="data" /> <input type="submit" />
-		</form>
+	<h1>Seja bem-vindo!</h1>
+	<br>
+	<form action="LoginServlet" method="post">
+		Usuario: <input type="text" name="login"><br> <br>
+		Senha :   <input type="password" name="senha"><br> <br>
+		<input type="submit" value="Acessar"> <input type="reset"
+			value="Limpar">
 
+	</form>
 </body>
 </html>
-

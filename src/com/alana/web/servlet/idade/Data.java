@@ -1,11 +1,11 @@
-package com.alana.web.idade.servlet;
+package com.alana.web.servlet.idade;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-import com.alana.web.idade.excecao.DataInvalidaException;
+import com.alana.web.servlet.excecao.DataInvalidaException;
 
 public class Data {
 

@@ -1,4 +1,4 @@
-package com.alana.web.servlet.Login;
+package com.alana.web.servlet.login;
 
 public class Autenticacao {
 	private String login;

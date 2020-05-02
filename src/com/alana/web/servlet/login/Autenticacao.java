@@ -7,7 +7,7 @@ public class Autenticacao {
 	public static boolean AutenticacaoLog(String login, String senha) {
 		boolean aut = false;
 		try {
-			if (login.contentEquals("root") && senha.equals("123")) {
+			if (login.equals("root") && senha.equals("123")) {
 				aut = true;
 			} else {
 				aut = false;

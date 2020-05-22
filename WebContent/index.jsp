@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>ProjetoServlet</title>
 
 <style><%@include file="/WEB-INF/style/estilo.css"%></style>

@@ -1,4 +1,4 @@
-package com.alana.web.idade.servlet;
+package com.alana.web.servlet.idade;
 
 import java.io.IOException;
 

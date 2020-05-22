@@ -1,4 +1,4 @@
-package com.alana.web.idade.excecao;
+package com.alana.web.servlet.excecao;
 
 public class DataInvalidaException extends RuntimeException{
 	private static final long serialVersionUID = 1L;

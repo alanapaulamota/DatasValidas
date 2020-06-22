@@ -17,7 +17,7 @@
 <body>
 	<h1>Seja bem-vindo!</h1>
 	<br>
-	<form action="LoginServlet" method="post">
+	<form action="Servlet" method="post">
 		Usuario: <input type="text" name="login"><br> <br>
 		Senha :   <input type="password" name="senha"><br> <br>
 		<input type="submit" value="Acessar"> <input type="reset"

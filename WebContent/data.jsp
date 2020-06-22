@@ -12,7 +12,7 @@
 <body>
 		<h2>Calcule sua idade:</h2>
 		Digite sua data de nascimento e pressione o botão:<br><br>
-		<form action="IdadeServlet" method="post">
+		<form action="Servlet" method="post">
 			Data: <input type="text" name="data" /> <input type="submit" />
 		</form>
 

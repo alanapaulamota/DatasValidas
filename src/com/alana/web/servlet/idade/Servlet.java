@@ -1,6 +1,7 @@
 package com.alana.web.servlet.idade;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -10,13 +11,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alana.web.servlet.dao.UsuarioDao;
+import com.alana.web.servlet.model.Usuario;
 
 @WebServlet("/IdadeServlet")
-public class IdadeServlet extends HttpServlet {
+public class Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// Idade
 		String data = request.getParameter("data");
 
 		Data hoje = new Data();
@@ -27,6 +31,33 @@ public class IdadeServlet extends HttpServlet {
 
 		RequestDispatcher rd = request.getRequestDispatcher("idade.jsp");
 		rd.forward(request, response);
+
+		
+		// Usuario
+		String nome = request.getParameter("nome");
+		String dataNascimento = request.getParameter("data de nascimento");
+		String email = request.getParameter("email");
+		String senha = request.getParameter("senha");
+
+		Usuario usuario = new Usuario();
+		usuario.setNome(nome);
+		usuario.setDataNascimento(dataNascimento);
+		usuario.setEmail(email);
+		usuario.setSenha(senha);
+
+		UsuarioDao dao = new UsuarioDao();
+		String retorno = dao.inserir(usuario);
+		if (retorno.equals("sucesso")) {
+			response.sendRedirect("welcome.jsp");
+		} else {
+			PrintWriter out = response.getWriter();
+			out.print("html");
+			out.print("<h2> Nao foi possivel inserir usuario</h2>");
+			out.print("html");
+			out.print("<a href='welcome.jsp'>Voltar</a>");
+			out.print("html");
+
+		}
 	}
 
 	// TODO tratar 10/10/2020

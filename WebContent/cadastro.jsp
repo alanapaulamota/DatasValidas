@@ -4,20 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>LoginServlet</title>
+<title>Crud JSP</title>
 </head>
 <body>
 	<h1>CRUD JSP</h1>
-<!-- 	<form action="LoginServlet" method="post"> -->
-		<h3> Cadastro</h3>
+	<form action="Servlet" method="post">
 		<table border="1">
-		<tr>
-		<td>Nome</td>
-		<td>DataNascimento</td>
-		<td>Email</td>
-		<td>Senha</td>
-		</tr>
-
-<!-- 	</form> -->
+			Nome
+			<Input type='text' name='nome'> Data de Nascimento
+			<Input type='text' name='DataNascimento'> Email
+			<Input type='text' name='email'> Senha
+			<Input type='text' name='senha'>
+			<Input type='submit' value='Inserir'>
+			</form>
+			<a href="welcome.jsp">Voltar</a>
 </body>
 </html>
